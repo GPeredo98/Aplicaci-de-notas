@@ -1,0 +1,29 @@
+ <section id="section-materias" class="w-50">
+    <div id="header-materias" style="display: flex">
+        <h2>Notas</h2>
+    </div>
+    <table id="tblNotas" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 46.66%">Materia</th>
+                <th>Primer parcial</th>
+                <th>Segundo parcial</th>
+                <th>Controles</th>
+                <th>Prácticos</th>
+                <th>Examen final</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nota in listaNotas %}
+            <tr id="tr{{ materia.id_materia }}">
+                <td>{{ nota.fk_materia.nombre }}</td>
+                {% if nota.primer_parcial is not None %}<td>{{ nota.primer_parcial }}</td>{% else %}<td></td>{% endif %}
+                {% if nota.segundo_parcial is not None %}<td>{{ nota.segundo_parcial }}</td>{% else %}<td></td>{% endif %}
+                {% if nota.controles is not None %}<td>{{ nota.controles }}</td>{% else %}<td></td>{% endif %}
+                {% if nota.practicos is not None %}<td>{{ nota.practicos }}</td>{% else %}<td></td>{% endif %}
+                {% if nota.examen_final is not None %}<td>{{ nota.examen_final }}</td>{% else %}<td></td>{% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>

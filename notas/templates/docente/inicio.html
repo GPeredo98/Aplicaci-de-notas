@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 5%">
+        {% if valor == 'materias' %}
+            {% include 'docente/tablas/table_materias.html' %}
+        {% elif valor == 'notas' %}
+            {% include 'docente/tablas/table_notas.html' %}
+        {% endif %}
+    </main>
+{% endblock %}

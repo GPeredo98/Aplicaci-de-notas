@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aplicación de Notas</title>
+        <script src="https://kit.fontawesome.com/fba0fc5157.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!--<link rel="stylesheet" type="text/css" href="">-->
+        <style>
+            html, body{
+                height:100%;
+                margin:0;
+                display: flex;
+                flex-direction: column;
+            }
+
+            header {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                padding: 0.5% 2%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            footer {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+            }
+
+            .main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 5%;
+            }
+
+            .btn-add {
+                color: royalblue;
+            }
+
+            .btn-add:hover {
+                color: dodgerblue;
+            }
+
+            .btn-infor {
+                color: #eed901;
+            }
+
+            .btn-infor:hover {
+                color: #fce601;
+            }
+
+            .btn-edit {
+                color: #0dd800;
+            }
+
+            .btn-edit:hover {
+                color: #0ee800;
+            }
+
+            .btn-delete {
+                color: #db000b;
+            }
+
+            .btn-delete:hover {
+                color: red;
+            }
+
+            .td-botones {
+                margin-top: auto;
+                margin-bottom: auto;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                display:flex;
+                height: 50px;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+
+            .nav-item {
+                padding: 0 8px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <header class="bg-light">
+            <span class="navbar-brand" href="#">Aplicación de Notas</span>
+            {% if user.is_authenticated %}
+                <div>
+                    {% if user.groups.all.0.name == "Administradores" %}
+                        <a href="{% url 'Ver materias' %}" class="nav-item">Materias</a>
+                        <a href="{% url 'Ver docentes' %}" class="nav-item">Docentes</a>
+                        <a href="{% url 'Ver estudiantes' %}" class="nav-item">Estudiantes</a>
+                    {% elif user.groups.all.0.name == "Docentes" %}
+                        <a href="{% url 'Ver materias docente' %}" class="nav-item">Materias</a>
+                        <a href="{% url 'Ver notas docente' %}" class="nav-item">Notas</a>
+                    {% elif user.groups.all.0.name == "Estudiantes" %}
+                        <a href="{% url 'Ver materias estudiante' %}" class="nav-item">Materias</a>
+                        <a href="{% url 'Ver notas' %}" class="nav-item">Ver notas</a>
+                    {% endif %}
+                    <a href="{% url 'Logout' %}" class="btn btn-info">LOG OUT</a>
+                </div>
+            {% endif %}
+        </header>
+        {% block content %}
+
+        {% endblock %}
+        <footer class="bg-light">
+          <div class="footer-copyright text-center py-3">© Desarrollado por: Gabriel Peredo</div>
+        </footer>
+    </body>
+</html>

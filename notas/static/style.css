@@ -1,0 +1,70 @@
+    html, body{
+        height:100%;
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        background: aqua;
+    }
+
+    header {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        padding: 0.5% 2%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .btn-add {
+        color: royalblue;
+    }
+
+    .btn-add:hover {
+        color: dodgerblue;
+    }
+
+    .btn-infor {
+        color: #d3c101;
+    }
+
+    .btn-infor:hover {
+        color: #fce601;
+    }
+
+    .btn-edit {
+        color: #0dd800;
+    }
+
+    .btn-edit:hover {
+        color: lawngreen;
+    }
+
+    .btn-delete {
+        color: #db000b;
+    }
+
+    .btn-delete:hover {
+        color: red;
+    }
+
+    .td-botones {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        display:flex;
+        height: 50px;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .nav-item {
+        padding: 0 8px;
+
+    }

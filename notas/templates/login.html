@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center; height: 100%; align-items: center">
+        <main class="wrapper fadeIn w-25 ">
+            <form method="post" action="{% url 'Logon' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    {{ form.password }}
+                </div>
+                <input id="btnIngresar" class="fadeIn form-control btn btn-info" type="submit" value="INGRESAR">
+                <input type="hidden" name="next" value="{{ next }}">
+
+                {% if errors != None %}
+                    <br>
+                    <br>
+                    <p style="color: red; text-align: center">{{ errors }}</p>
+
+                    <div id="loader" style="text-align: center; visibility: hidden">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                {% else %}
+                    <br>
+                    <br>
+                    <p style="color: red; text-align: center; visibility: hidden">{{ errors }}</p>
+
+                    <div id="loader" style="text-align: center; display: none">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                {% endif %}
+            </form>
+
+        </main>
+    </div>
+    <script>
+        $('#btnIngresar').click(function () {
+            if($('#txtUsername').val() != "" && $('#txtPassword').val() != "") {
+                $('#loader').attr('style', 'text-align: center; visibility: visible')
+                $('#loader').show();
+            }
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 5%">
+
+        <form action="" method="post" autocomplete="off">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                <div>
+                    {{ form.nombre.errors }}
+                </div>
+                <label for="form.nombre.id_for_label">Nombre de la materia</label>
+                {{ form.nombre }}
+            </div>
+            <div class="form-group">
+                <div>
+                    {{ form.sigla.errors }}
+                </div>
+                <label for="form.sigla.id_for_label">Sigla de la materia</label>
+                {{ form.sigla }}
+            </div>
+            <div class="form-group">
+                <div>
+                    {{ form.docente.errors }}
+                </div>
+                <label for="form.docente.id_for_label">Docente</label>
+                {{ form.docente }}
+            </div>
+            <div hidden class="form-group">
+                <div>
+                    {{ form.estudiantes.errors }}
+                </div>
+                <label for="form.estudiantes.id_for_label">Estudiantes</label>
+                {{ form.estudiantes }}
+            </div>
+
+            <a href="{% url 'Ver materias' %}" class="btn btn-danger">CANCELAR</a>
+            <input type="submit" class="btn btn-info" value="GUARDAR">
+            {% if errors is not None %}
+                <span>{{ errors }}</span>
+            {% endif %}
+        </form>
+    </main>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 5%">
+        <div style="text-align: center">
+            <h2>{{ estudiante.first_name }} {{ estudiante.last_name }}</h2>
+            <h5>{{ materia.nombre }}</h5>
+        </div>
+        <form action="" method="post" autocomplete="off" style="padding-top: 2%">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group row">
+                <div>
+                    {{ form.primer_parcial.errors }}
+                </div>
+                <label for="form.primer_parcial.id_for_label" class="col-sm-5 col-form-label">Primer parcial</label>
+                <div class="col-sm-5">
+                    {{ form.primer_parcial }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div>
+                    {{ form.segundo_parcial.errors }}
+                </div>
+                <label for="form.segundo_parcial.id_for_label" class="col-sm-5 col-form-label">Segundo parcial</label>
+                <div class="col-sm-5">
+                    {{ form.segundo_parcial }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div>
+                    {{ form.controles.errors }}
+                </div>
+                <label for="form.docente.id_for_label" class="col-sm-5 col-form-label">Controles</label>
+                <div class="col-sm-5">
+                    {{ form.controles }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div>
+                    {{ form.practicos.errors }}
+                </div>
+                <label for="form.estudiantes.id_for_label" class="col-sm-5 col-form-label">Practicos</label>
+                <div class="col-sm-5">
+                    {{ form.practicos }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div>
+                    {{ form.examen_final.errors }}
+                </div>
+                <label for="form.estudiantes.id_for_label" class="col-sm-5 col-form-label">Examen final</label>
+                <div class="col-sm-5">
+                    {{ form.examen_final }}
+                </div>
+            </div>
+            <div style="padding-left: 40px">
+                <br>
+                {% if type == 'from_tabla' %}
+                    <a href="{% url 'Ver notas docente' %}" class="btn btn-danger">CANCELAR</a>
+                {% else %}
+                    <a href="{% url 'Detalle materia' materia.id_materia %}" class="btn btn-danger">CANCELAR</a>
+                {% endif %}
+                <input type="submit" class="btn btn-info" value="GUARDAR">
+            </div>
+        </form>
+    </main>
+{% endblock %}

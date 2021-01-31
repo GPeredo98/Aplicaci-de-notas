@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 5%">
+        {% if valor == 'materias' %}
+            {% include 'administrador/table_materias.html' %}
+        {% elif valor == 'docentes' %}
+            {% include 'administrador/table_docentes.html' %}
+        {% elif valor == 'estudiantes' %}
+            {% include 'administrador/table_estudiantes.html' %}
+        {% endif %}
+    </main>
+{% endblock %}

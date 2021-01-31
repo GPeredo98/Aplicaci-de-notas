@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de ayuda</title>
+</head>
+<body>
+    <h1>Esta es la página de ayuda</h1>
+    <p>Esta aplicación se trata de un proyecto de la materia Ingeniería Web III de la Universidad Nur</p>
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div>
+            {{ form.nombre.errors }}
+        </div>
+        <div>
+            <label for="{{ form.nombre.id_for_label }}">Nombre de la materia:</label>
+        </div>
+        <div>
+            {{ form.nombre }}
+        </div>
+
+        <div>
+            {{ form.sigla.errors }}
+        </div>
+        <div>
+            <label for="{{ form.sigla.id_for_label }}">Sigla de la materia:</label>
+        </div>
+        <div>
+            {{ form.sigla }}
+        </div>
+
+        <input type="submit" value="CREAR">
+    </form>
+</body>
+</html>
